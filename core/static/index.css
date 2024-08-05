@@ -1,0 +1,273 @@
+/* General Styles */
+body {
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: 'Lilita One', cursive, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* Header Styles */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #0f1923;
+    border-bottom: 3px solid #ff4655;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #ff4655;
+    color: #fff;
+}
+
+.nav-btn {
+    background-color: #ff4655;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #e12a3b;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #ff4655;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    background-color: #e12a3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Asegura que los elementos de user-info se envuelvan correctamente */
+    justify-content: center; /* Centra los elementos de user-info */
+    width: 100%; /* Asegura que user-info ocupe el ancho completo */
+}
+
+.user-info .username {
+    margin-right: 10px;
+}
+
+.video-text-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0;
+    background-color: #121212;
+    margin: 0;
+}
+
+.video-text {
+    max-width: 500px;
+    margin: 20px;
+}
+
+.video-text h2 {
+    color: #ff4655;
+}
+
+.video-text p {
+    font-size: 1.1em;
+}
+
+.video-image {
+    max-width: 500px;
+    margin: 20px;
+}
+
+.video-image img {
+    width: 100%;
+}
+
+.btn.btn-rojo {
+    background-color: #ff4655;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn.btn-rojo:hover {
+    background-color: #e03c50;
+}
+
+.informacion-juego {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.informacion-juego .info-info {
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #ff4655;
+}
+
+.actualizaciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.actualizacion {
+    max-width: 350px;
+    margin: 20px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.actualizacion img {
+    width: 100%;
+    display: block;
+}
+
+.descripcion {
+    padding: 15px;
+    text-align: left;
+}
+
+.descripcion h2 {
+    color: #ff4655;
+    margin: 0 0 10px;
+}
+
+.descripcion p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer {
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 100px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #ff4655;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Hace que los elementos del header se dispongan en una columna en lugar de en una fila */
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+    }
+
+    .video-text-section {
+        flex-direction: column;
+    }
+
+    .video-text, .video-image {
+        margin: 10px 0;
+        max-width: 100%;
+    }
+}
+
+.footer-middle {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.footer-social img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}

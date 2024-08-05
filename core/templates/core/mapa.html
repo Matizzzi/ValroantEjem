@@ -1,0 +1,38 @@
+
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Chile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="menu">Información del Juego</a></li>
+                <li><a href="{% url 'accesorios' %}">Accesorios</a></li>
+                <li><a href="menu">Noticias</a></li>
+                <li><a href="{% url 'eventoss' %}">Eventos</a></li>
+                <li><a href="menu">Soporte Chile</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="socialDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redes Sociales</a>
+                    <div class="dropdown-menu" aria-labelledby="socialDropdown">
+                        <a class="dropdown-item" href="https://x.com/VALORANTLATAM?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">Twitter</a>
+                        <a class="dropdown-item" href="https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg" target="_blank">YouTube</a>
+                        <a class="dropdown-item" href="https://www.instagram.com/valorantlatam/?hl=es" target="_blank">Instagram</a>
+                        <a class="dropdown-item" href="https://www.facebook.com/groups/VALORANTLAT/?locale=es_LA" target="_blank">Facebook</a>
+                        <a class="dropdown-item" href="https://discord.com/invite/valorant-latam-839299188529692682" target="_blank">Discord</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Valorant Chile - Información, noticias y eventos sobre Valorant en Chile.">
+    <meta name="keywords" content="Valorant, Chile, noticias, eventos, agentes, mapas, armas">
+    <meta name="author" content="Tu Nombre">
+    <meta property="og:title" content="Valorant Chile">
+    <meta property="og:description" content="Información, noticias y eventos sobre Valorant en Chile.">
+    <meta property="og:image" content="{% static 'imagenes/og-image.jpg' %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tusitio.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tuusuario">
+    <title>Valorant Chile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'Accesorios.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Spicy+Rice&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile" loading="lazy">
+            </a>
+        </div>
+        <div class="back-button">
+            <a href="{% url 'home' %}" aria-label="Volver a inicio"  class="btn btn-primary nav-btn">Volver</a>
+        </div>
+        <nav aria-label="Main navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">Inicio</a></li>
+                <li class="nav-item"><a href="{% url 'productos' %}" class="nav-link {% if request.path == '/productos' %}active{% endif %}">Accesorios</a></li>
+                <li class="nav-item"><a href="{% url 'registro' %}" class="btn btn-primary nav-btn">Registro</a></li>
+                <li class="nav-item"><a href="{% url 'carrito' %}" class="btn btn-primary nav-btn">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="product-container">
+        {% if productos_en_venta %}
+            {% for producto in productos_en_venta %}
+                <div class="product-card">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen }}" alt="{{ producto.detalle }}">
+                    {% endif %}
+                    <p class="product-name">{{ producto.detalle }}</p>
+                    <p class="price">Precio: {{ producto.precio }} CLP</p>
+                    <p class="stock">Stock: {{ producto.stock }}</p>
+                    <p class="offer">En Oferta: {% if producto.oferta %}Sí{% else %}No{% endif %}</p>
+                    <a href="{% url 'pagars' %}" class="btn btn-primary">Pagar</a>
+                    <a href="{% url 'addtocar' producto.codigo %}" class="btn btn-primary">Agregar</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay productos en venta en este momento.</p>
+        {% endif %}
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="#" class="footer-link">DESCARGA EL JUEGO</a>
+            <a href="#" class="footer-link">DESCARGA LA APLICACIÓN RIOT MOBILE</a>
+        </div>
+        <div class="footer-middle">
+            <a href="https://x.com/VALORANTLATAM" target="_blank" class="footer-social" aria-label="Twitter"><img src="{% static 'imagenes/twitter.png' %}" alt="Twitter"></a>
+            <a href="https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg" target="_blank" class="footer-social" aria-label="YouTube"><img src="{% static 'imagenes/youtube.png' %}" alt="YouTube"></a>
+            <a href="https://www.instagram.com/valorantlatam" target="_blank" class="footer-social" aria-label="Instagram"><img src="{% static 'imagenes/instagram.png' %}" alt="Instagram"></a>
+            <a href="https://www.facebook.com/groups/VALORANTLAT" target="_blank" class="footer-social" aria-label="Facebook"><img src="{% static 'imagenes/facebook.png' %}" alt="Facebook"></a>
+            <a href="https://discord.com/invite/valorant-latam-839299188529692682" target="_blank" class="footer-social" aria-label="Discord"><img src="{% static 'imagenes/discord.png' %}" alt="Discord"></a>
+        </div>
+        <div class="footer-bottom">
+            <img src="{% static 'imagenes/valorant.png' %}" alt="Riot Games" class="footer-logo">
+            <img src="{% static 'imagenes/logo.png' %}" alt="Valorant" class="footer-logo">
+            <p>&copy; 2020-2024 Riot Games, Inc. RIOT GAMES, VALORANT y todos los logotipos relacionados son marcas y nombres comerciales, marcas de servicio o marcas registradas de Riot Games, Inc.</p>
+            <a href="#" class="footer-link">AVISO DE PRIVACIDAD</a>
+            <a href="#" class="footer-link">TÉRMINOS DE SERVICIO</a>
+            <a href="#" class="footer-link">PREFERENCIAS DE COOKIES</a>
+            <img src="{% static 'imagenes/esrb.png' %}" alt="ESRB Rating" class="footer-rating">
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

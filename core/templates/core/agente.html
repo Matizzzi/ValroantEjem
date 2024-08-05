@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Chile - Agentes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'agentes.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Spicy+Rice&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="back-button">
+            <a href="{% url 'home' %}" aria-label="Volver a inicio">Volver</a>
+        </div>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'productos' %}">Accesorios</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="socialDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redes Sociales</a>
+                    <div class="dropdown-menu" aria-labelledby="socialDropdown">
+                        <a class="dropdown-item" href="https://x.com/VALORANTLATAM?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">Twitter</a>
+                        <a class="dropdown-item" href="https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg" target="_blank">YouTube</a>
+                        <a class="dropdown-item" href="https://www.instagram.com/valorantlatam/?hl=es" target="_blank">Instagram</a>
+                        <a class="dropdown-item" href="https://www.facebook.com/groups/VALORANTLAT/?locale=es_LA" target="_blank">Facebook</a>
+                        <a class="dropdown-item" href="https://discord.com/invite/valorant-latam-839299188529692682" target="_blank">Discord</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1 class="titulo">AGENTES</h1>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/brim.png' %}" alt="Agente 1">
+                <p class="nombre-agente">BREACH</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/phenix.png' %}" alt="Agente 2">
+                <p class="nombre-agente">PHOENIX</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/sage.png' %}" alt="Agente 3">
+                <p class="nombre-agente">SAGE</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/sova.png' %}" alt="Agente 4">
+                <p class="nombre-agente">SOVA</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/viper.png' %}" alt="Agente 5">
+                <p class="nombre-agente">VIPER</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/cypher.png' %}" alt="Agente 6">
+                <p class="nombre-agente">CYPHER</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/reyna2.png' %}" alt="Agente 7">
+                <p class="nombre-agente">REYNA</p>
+            </div>
+            <div class="col-md-3 col-sm-6 agente">
+                <img src="{% static 'imagenes/killjoy.png' %}" alt="Agente 8">
+                <p class="nombre-agente">KILLJOY</p>
+            </div>
+            <!-- Añade más agentes según sea necesario -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

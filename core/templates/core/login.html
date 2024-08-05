@@ -1,0 +1,72 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ingreso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Spicy+Rice&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+                </a>
+            </div>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list d-flex">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'productos' %}" class="nav-link">Accesorios</a></li>
+                    <li class="nav-item"><a href="{% url 'registro' %}" class="btn btn-primary nav-btn">Registro</a></li>
+                    <li class="nav-item"><a href="{% url 'carrito' %}" class="btn btn-primary nav-btn">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Formulario de Ingreso</h1>
+        <section class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
+            </form>
+            <div class="text-center mt-4">
+                <a href="{% url 'registro' %}" class="btn btn-primary btn-lg">Regístrate con nosotros</a>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="#" class="footer-link">DESCARGA EL JUEGO</a>
+            <a href="#" class="footer-link">DESCARGA LA APLICACIÓN RIOT MOBILE</a>
+        </div>
+        <div class="footer-middle">
+            <a href="https://x.com/VALORANTLATAM" target="_blank" class="footer-social" aria-label="Twitter"><img src="{% static 'icons/twitter.png' %}" alt="Twitter"></a>
+            <a href="https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg" target="_blank" class="footer-social" aria-label="YouTube"><img src="{% static 'icons/youtube.png' %}" alt="YouTube"></a>
+            <a href="https://www.instagram.com/valorantlatam" target="_blank" class="footer-social" aria-label="Instagram"><img src="{% static 'icons/instagram.png' %}" alt="Instagram"></a>
+            <a href="https://www.facebook.com/groups/VALORANTLAT" target="_blank" class="footer-social" aria-label="Facebook"><img src="{% static 'icons/facebook.png' %}" alt="Facebook"></a>
+            <a href="https://discord.com/invite/valorant-latam-839299188529692682" target="_blank" class="footer-social" aria-label="Discord"><img src="{% static 'icons/discord.png' %}" alt="Discord"></a>
+        </div>
+        <div class="footer-bottom">
+            <img src="{% static 'images/riot-games.png' %}" alt="Riot Games" class="footer-logo">
+            <img src="{% static 'images/valorant.png' %}" alt="Valorant" class="footer-logo">
+            <p>&copy; 2020-2024 Riot Games, Inc. RIOT GAMES, VALORANT y todos los logotipos relacionados son marcas y nombres comerciales, marcas de servicio o marcas registradas de Riot Games, Inc.</p>
+            <a href="#" class="footer-link">AVISO DE PRIVACIDAD</a>
+            <a href="#" class="footer-link">TÉRMINOS DE SERVICIO</a>
+            <a href="#" class="footer-link">PREFERENCIAS DE COOKIES</a>
+            <img src="{% static 'images/esrb.png' %}" alt="ESRB Rating" class="footer-rating">
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

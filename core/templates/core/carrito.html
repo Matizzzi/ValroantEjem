@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{% static 'carrito.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+                </a>
+            </div>
+        <nav aria-label="Main navigation" role="navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">Inicio</a></li>
+                <li class="nav-item"><a href="{% url 'productos' %}" class="nav-link {% if request.path == '/productos' %}active{% endif %}">Accesorios</a></li>
+                <li class="nav-item"><a href="{% url 'registro' %}" class="btn btn-primary nav-btn">Registro</a></li>
+                <li class="nav-item"><a href="{% url 'carrito'%}" class="btn btn-primary nav-btn">Carrito</a></li>
+            </ul>
+        </nav>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                <span class="username">Hola, {{ user.username }}!</span>
+                <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Salir</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Iniciar Sesión</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main class="container mt-5">
+    <h1>CARRITO DE COMPRAS</h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.codigo }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" style="width: 50px; height: auto;"></td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.subtotal }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No hay productos en el carrito.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if productos %}
+        {% if user.is_authenticated %}
+        <div class="Comprar">
+            <a href="{% url 'comprar' %}" class="btn btn-primary">Comprar</a>
+        </div>
+        {% else %}
+        <div class="Comprar">
+            <a href="{% url 'login' %}?next={% url 'comprar' %}" class="btn btn-primary">Iniciar Sesión para Comprar</a>
+        </div>
+        {% endif %}
+    {% endif %}
+    <h2>Total: {{ total }}</h2>
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 Valorant Chile. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

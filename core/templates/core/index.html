@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+                </a>
+            </div>
+            <nav aria-label="Main navigation" role="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'productos' %}" class="nav-link {% if request.path == '/productos' %}active{% endif %}">Accesorios</a></li>
+                    <li class="nav-item"><a href="{% url 'registro' %}" class="btn nav-btn">Registro</a></li>
+                    <li class="nav-item"><a href="{% url 'carrito'%}" class="btn nav-btn">Carrito</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                {% if user.is_authenticated %}
+            <span class="username">Hola, {{ user.username }}!</span>
+            {% if suscrito %}
+                👑  <!-- Ícono de corona para suscritos -->
+            {% else %}
+                🔴  <!-- Ícono de círculo rojo para no suscritos -->
+            {% endif %}
+
+
+                    <form id="logout-form" method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn nav-btn">Salir</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn nav-btn">Iniciar Sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    
+    
+    <!-- Sección de video y texto -->
+    <div class="video-text-section">
+        <div class="video-text">
+            <h2>LANZAMIENTO EN CONSOLA</h2>
+            <p>VALORANT // AÑO 4</p>
+            <a href="#" class="btn btn-rojo">JUGAR YA</a>
+        </div>
+        <div class="video-image">
+            <img src="{% static 'imagenes/imagen1.png' %}" alt="Video Imagen">
+        </div>
+    </div>
+
+    <div class="video-text-section">
+        <div class="video-text">
+            <h2>SOMOS VALORANT</h2>
+            <p>DESAFÍA LOS LÍMITES</p>
+            <p>Demuestra tu creatividad y experiencia en un escenario competitivo internacional. Dispondrás de 13 rondas para atacar y defender tu lado mediante un manejo de armas precisas y habilidades tácticas. Con una vida por ronda, tendrás que pensar más rápido que vuestros oponentes si quieres sobrevivir. Enfrenta a vuestros enemigos en los modos competitivo y normal, además de en Combate a muerte y Fiebre de la Spike.</p>
+            <a href="#" class="btn btn-rojo">DESCUBRE EL JUEGO</a>
+        </div>
+        <div class="video-image">
+            <img src="{% static 'imagenes/imagen2.png' %}" alt="Video Imagen">
+        </div>
+    </div>
+
+    <div class="video-text-section">
+        <div class="video-text">
+            <h2>Agentes</h2>
+            <p>Desde el corazón de México, Reyna llega para dominar los duelos uno contra uno y cada asesinato que realiza aumenta su poder. Su letalidad solo está limitada por tu destreza al usarla, por lo que su eficacia dependerá mucho de ello.</p>
+            <a href="{% url 'agentes' %}" class="btn btn-rojo">Más agentes</a>
+        </div>
+        <div class="video-image">
+            <img src="{% static 'imagenes/reyna.png' %}" alt="Video Imagen">
+        </div>
+    </div>
+
+    <div class="video-text-section">
+        <div class="video-text">
+            <h2>Información Del Juego</h2>
+            <p>Sunsent</p>
+            <p>Un desastre en una instalación local de Kingdom amenaza con sepultar el vecindario completo. Visita tu camión de comida favorito y luego lleva la pelea a la ciudad en este mapa tradicional de tres carriles.</p>
+            <a href="#" class="btn btn-rojo">DESCUBRE MÁS</a>
+        </div>
+        <div class="video-image">
+            <img src="{% static 'imagenes/mapa1.png' %}" alt="Video Imagen">
+        </div>
+    </div>
+
+    <div class="informacion-juego"> 
+        <h1 class="info-info">Información del juego</h1>
+        <div class="actualizaciones">
+            <div class="actualizacion">
+                <img src="{% static 'imagenes/mapa1.png'%}" alt="Mapa Sunset" loading="lazy">
+                <h2>SUNSET</h2>
+                <p>Un desastre en una instalación local de Kingdom amenaza con sepultar el vecindario completo. Visita tu camión de comida favorito y luego lleva la pelea a la ciudad en este mapa tradicional de tres carriles.</p>
+                <a href="{% url 'mapass' %}" class="btn-rojo">Ver todos los mapas</a>
+            </div>
+            <div class="actualizacion">
+                <img src="{% static 'imagenes/reyna.png'%}" alt="Agente Reyna" loading="lazy">
+                <h2>Reyna</h2>
+                <p>Desde el corazón de México, Reyna llega para dominar los duelos uno contra uno y cada asesinato que realiza aumenta su poder. Su letalidad solo está limitada por tu destreza al usarla, por lo que su eficacia dependerá mucho de ello.</p>
+                <a href="{% url 'agentes' %}" class="btn-rojo">Ver todos los agentes</a> 
+            </div>
+            <div class="actualizacion">
+                <img src="{% static 'imagenes/vandal.png' %}" alt="Arma Vandal" loading="lazy">
+                <h2 class="lol">Arsenal</h2>
+                <p>TYPES // RIFLES. Existe un tipo de felicidad que se mide al derribar enemigos con una Bulldog.</p>
+                <a href="{% url 'arsena' %}" class="btn-rojo">Ver todo el arsenal</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="informacion-juego">
+        <h1 class="noti-lol">Noticias</h1>
+        <div class="actualizaciones">
+            <div class="actualizacion">
+                <img src="{% static 'imagenes/weco.png' %}" alt="Noticia 1" loading="lazy">
+                <div class="descripcion">
+                    <h2>Versión 9.01 de VALORANT</h2>
+                    <p>Jugadores de consola: es hora de poner a prueba sus estrategias en Lotus.</p>
+                    <p>Hace 2 semanas</p>
+                </div>
+            </div>
+            <div class="actualizacion">
+                <img src="{% static 'imagenes/play.png' %}" alt="Noticia 2" loading="lazy">
+                <div class="descripcion">
+                    <h2>Las mejores jugadas de Playoffs</h2>
+                    <p>LATAM domina con Leviatán campeón y sus dos equipos en Champions.</p>
+                    <p>Hace 4 días</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer HTML -->
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="#" class="footer-logo">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Valorant Chile">
+            </a>
+            <div class="footer-middle">
+                <a href="https://x.com/VALORANTLATAM" target="_blank" class="footer-social" aria-label="Twitter"><img src="{% static 'imagenes/twitter.png' %}" alt="Twitter"></a>
+                <a href="https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg" target="_blank" class="footer-social" aria-label="YouTube"><img src="{% static 'imagenes/youtube.png' %}" alt="YouTube"></a>
+                <a href="https://www.instagram.com/valorantlatam" target="_blank" class="footer-social" aria-label="Instagram"><img src="{% static 'imagenes/instagram.png' %}" alt="Instagram"></a>
+                <a href="https://www.facebook.com/groups/VALORANTLAT" target="_blank" class="footer-social" aria-label="Facebook"><img src="{% static 'imagenes/facebook.png' %}" alt="Facebook"></a>
+                <a href="https://discord.com/invite/valorant-latam-839299188529692682" target="_blank" class="footer-social" aria-label="Discord"><img src="{% static 'imagenes/discord.png' %}" alt="Discord"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Valorant Chile. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
